@@ -1,0 +1,4 @@
+class,iou,precision,recall,f1
+background,0.8924,0.947,0.9394,0.9432
+permanent_water,0.5592,0.8107,0.6431,0.7173
+flood,0.3448,0.4842,0.5449,0.5128

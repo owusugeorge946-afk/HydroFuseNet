@@ -1,0 +1,10 @@
+metric,value
+overall_accuracy,0.8946
+mean_iou,0.5988
+mean_f1,0.7244
+flood_iou,0.3448
+flood_precision,0.4842
+flood_recall,0.5449
+flood_f1,0.5128
+best_validation_flood_iou,0.5842
+selected_epoch,6.0

@@ -1,0 +1,7 @@
+configuration,removed_modality,best_epoch,flood_iou,flood_precision,flood_recall,flood_f1,delta_flood_iou_vs_full
+full_model,none,6,0.3448,0.4842,0.5449,0.5128,0.0
+no_optical,optical,7,0.4931,0.5524,0.8212,0.6605,0.1483
+no_pre_sar,s1_pre,2,0.3376,0.3567,0.863,0.5048,-0.007199999999999984
+no_post_sar,s1_post,2,0.3149,0.321,0.9431,0.479,-0.029899999999999982
+no_sar_change,sar_change,1,0.346,0.3999,0.72,0.5142,0.0011999999999999789
+no_dem,dem,2,0.3515,0.3745,0.8512,0.5202,0.006699999999999984

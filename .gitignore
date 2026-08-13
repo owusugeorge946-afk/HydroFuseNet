@@ -1,0 +1,24 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Large data / model artifacts
+*.pt
+*.pth
+*.ckpt
+*.tif
+*.tiff
+*.nc
+*.h5
+*.hdf5
+*.zip
+
+# Local runtime
+.env

@@ -1,0 +1,2 @@
+benchmark,target_classes,total_events,training_events,validation_events,test_events,source_tiles,retained_patches,patch_size_px,stride_px,split_protocol,modalities
+GEOID-Flood,background; permanent_water; flood,28,16,6,6,771,26111,256x256,128,event-disjoint,Sentinel-1 pre-event SAR; Sentinel-1 post-event SAR; SAR change; Sentinel-2 optical; DEM

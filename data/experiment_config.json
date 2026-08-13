@@ -1,0 +1,34 @@
+{
+  "model_name": "HydroFuseNet",
+  "task": "three-class semantic segmentation",
+  "classes": [
+    "background",
+    "permanent_water",
+    "flood"
+  ],
+  "inputs": [
+    "pre-event Sentinel-1 SAR (VV/VH)",
+    "post-event Sentinel-1 SAR (VV/VH)",
+    "SAR change (post-event minus pre-event response)",
+    "pre-event Sentinel-2 optical imagery",
+    "digital elevation model (DEM)"
+  ],
+  "patch_size_px": [
+    256,
+    256
+  ],
+  "stride_px": 128,
+  "learning_rate": 0.0003,
+  "training_hardware": "NVIDIA A100 GPU",
+  "selection_metric": "validation Flood IoU",
+  "selected_epoch": 6,
+  "best_validation_flood_iou": 0.5842,
+  "split_protocol": {
+    "type": "event-disjoint",
+    "training_events": 16,
+    "validation_events": 6,
+    "test_events": 6,
+    "event_overlap": false
+  },
+  "uncertainty_note": "Repository summary uses manuscript-reported uncertainty values. Confirm the exact uncertainty formula in the final analysis code before public release."
+}
