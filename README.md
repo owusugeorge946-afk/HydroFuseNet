@@ -99,3 +99,57 @@ HydroFuseNet/
 │
 └── docs/
     └── DATA_DICTIONARY.md
+
+
+Modality-ablation experiments
+
+The repository includes results from independently trained leave-one-modality-out configurations. These experiments assess how the model responds when optical imagery, pre-event SAR, post-event SAR, SAR change, or DEM information is excluded.
+
+The ablation results are provided in:
+
+data/trained_modality_ablation.csv
+
+These experiments should be interpreted as tests of modality dependence and interaction rather than simple feature-importance rankings.
+
+Predictive uncertainty
+
+Event-level uncertainty summaries are provided in:
+
+data/event_uncertainty_summary.csv
+
+The data distinguish mean predictive uncertainty for correctly and incorrectly classified pixels for each independent test event, allowing model reliability to be examined alongside segmentation performance.
+
+Data availability
+
+This repository provides derived research results and experiment metadata. It does not redistribute the complete source Earth-observation imagery, original flood-reference labels, or the full GEOID-Flood benchmark.
+
+Users seeking to reproduce the complete workflow should obtain the underlying benchmark and satellite observations from their respective original sources and comply with the corresponding data-access and licensing requirements.
+
+Raw HydroFuseNet model checkpoints are not included in this release.
+
+Data provenance
+
+The HydroFuseNet experiments use the GEOID-Flood benchmark assembled from Copernicus Emergency Management Service flood activations together with Sentinel-1 SAR, Sentinel-2 optical imagery, and terrain information.
+
+Original datasets remain subject to the citation, access, and redistribution requirements of their respective providers.
+
+Citation
+
+If you use the results or resources provided in this repository, please cite the associated HydroFuseNet manuscript.
+
+GitHub-compatible citation metadata are provided in:
+
+CITATION.cff
+
+The final journal citation and DOI will be added after publication.
+
+Correspondence
+
+George Owusu Amoah
+Department of Geography and Regional Planning
+University of Cape Coast, Ghana
+Email: george.amoah003@stu.ucc.edu.gh
+
+Version
+
+HydroFuseNet v1.0.0 — 2026
