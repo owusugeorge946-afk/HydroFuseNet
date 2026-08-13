@@ -1,11 +1,33 @@
 cff-version: 1.2.0
+
 message: "If you use these HydroFuseNet results, please cite the associated manuscript."
-title: "HydroFuseNet: Event-Generalizable Multimodal Earth Observation for Flood Segmentation and Uncertainty-Aware Mapping"
+
+title: "HydroFuseNet: Event-Generalizable Multimodal Deep Learning for Flood Segmentation with Uncertainty-Aware Mapping"
+
 type: dataset
+
 authors:
+  - family-names: "Field"
+    given-names: "Sean"
+    affiliation: "School of Computing and Department of Anthropology, University of Wyoming, USA"
+
+  - family-names: "Olawoyin"
+    given-names: "Rachel"
+    affiliation: "Department of Geography and Regional Planning, University of Cape Coast, Ghana"
+
   - family-names: "Amoah"
     given-names: "George Owusu"
+    affiliation: "Department of Geography and Regional Planning, University of Cape Coast, Ghana"
+    email: "george.amoah003@stu.ucc.edu.gh"
+
+  - family-names: "Quayson"
+    given-names: "Francis"
+    affiliation: "Department of Land Surveying and Geospatial Science, The Hong Kong Polytechnic University, Hong Kong, China"
+
 year: 2026
+
 version: "1.0.0"
-repository-code: "REPLACE_WITH_GITHUB_REPOSITORY_URL"
-notes: "Add all manuscript co-authors and the article DOI before the final public release."
+
+repository-code: "https://github.com/owusugeorge946-afk/HydroFuseNet"
+
+notes: "Research data and derived results accompanying the HydroFuseNet manuscript. George Owusu Amoah is the corresponding author. Francis Quayson is also affiliated with the Research Institute for Land and Space, The Hong Kong Polytechnic University, Hong Kong, China. Article DOI will be added after publication."
