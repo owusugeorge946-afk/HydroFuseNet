@@ -1,0 +1,43 @@
+{
+  "project": "HydroFuseNet",
+  "status": "reconstructed reproducibility implementation",
+  "classes": {
+    "background": 0,
+    "permanent_water": 1,
+    "flood": 2
+  },
+  "patch_size": 256,
+  "stride": 128,
+  "learning_rate": 0.0003,
+  "max_epochs": 10,
+  "selection_metric": "validation_flood_iou",
+  "documented_event_counts": {
+    "train": 16,
+    "validation": 6,
+    "test": 6
+  },
+  "modalities": [
+    "pre_sar",
+    "post_sar",
+    "sar_change",
+    "optical",
+    "dem"
+  ],
+  "uncertainty": "1_minus_max_probability",
+  "model": {
+    "base_channels": 32,
+    "note": "Reconstruction default; exact original layer widths not recovered."
+  },
+  "training": {
+    "batch_size": 8,
+    "optimizer": "AdamW",
+    "weight_decay": 0.0001,
+    "class_weights": [
+      1,
+      2,
+      3
+    ],
+    "seed": 42,
+    "note": "Reconstruction defaults; not verified original values."
+  }
+}
