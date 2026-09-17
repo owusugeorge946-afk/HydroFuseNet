@@ -2,7 +2,7 @@
 
 ## Event-Generalizable Multimodal Deep Learning for Flood Segmentation with Uncertainty-Aware Mapping
 
-**Sean Field¹, Rachel Olawoyin², George Owusu Amoah²*, Francis Quayson³˒⁴**
+**George Owusu Amoah*¹, Rachel Olawoyin² , Francis Quayson³˒⁴**
 
 ¹ School of Computing and Department of Anthropology, University of Wyoming, USA  
 ² Department of Geography and Regional Planning, University of Cape Coast, Ghana  
