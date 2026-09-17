@@ -2,17 +2,13 @@
 
 ## Event-Generalizable Multimodal Deep Learning for Flood Segmentation with Uncertainty-Aware Mapping
 
-**George Owusu Amoah*¹, Rachel Olawoyin² , Francis Quayson³˒⁴**
+George Owusu Amoah*¹, Rachel Olawoyin¹, Francis Quayson²˒³
 
-¹ School of Computing and Department of Anthropology, University of Wyoming, USA  
-² Department of Geography and Regional Planning, University of Cape Coast, Ghana  
-³ Department of Land Surveying and Geospatial Science, The Hong Kong Polytechnic University, Hong Kong, China  
-⁴ Research Institute for Land and Space, The Hong Kong Polytechnic University, Hong Kong, China  
+¹ Department of Geography and Regional Planning, University of Cape Coast, Ghana
+² Department of Land Surveying and Geospatial Science, The Hong Kong Polytechnic University, Hong Kong, China
+³ Research Institute for Land and Space, The Hong Kong Polytechnic University, Hong Kong, China
 
-*Corresponding author: George Owusu Amoah*
-
----
-
+Corresponding author: George Owusu Amoah
 ## Overview
 
 HydroFuseNet is a multimodal deep-learning framework for event-generalizable flood segmentation from Earth-observation data. The framework integrates pre-event Sentinel-1 SAR, post-event Sentinel-1 SAR, explicit SAR change, Sentinel-2 optical imagery, and terrain elevation to distinguish three classes:
