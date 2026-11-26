@@ -1,0 +1,33 @@
+{
+  "upload_type": "software",
+  "title": "HydroFuseNet: Reconstructed Reference Implementation and Event-Disjoint Flood Segmentation Evidence",
+  "creators": [
+    {
+      "name": "Amoah, George Owusu",
+      "affiliation": "Department of Geography and Regional Planning, University of Cape Coast, Cape Coast, Ghana."
+    },
+    {
+      "name": "Mostafiz, Rubayet Bin",
+      "affiliation": "LaHouse Research & Education Center, Department of Biological and Agricultural Engineering, Louisiana State University Agricultural Center, Baton Rouge, Louisiana, USA."
+    },
+    {
+      "name": "Olawoyin, Rachel",
+      "affiliation": "Department of Geography and Regional Planning, University of Cape Coast, Cape Coast, Ghana."
+    },
+    {
+      "name": "Quayson, Francis",
+      "affiliation": "Department of Land Surveying and Geospatial Science, The Hong Kong Polytechnic University, Hung Hom, Kowloon, Hong Kong, China.; Research Institute for Land and Space, The Hong Kong Polytechnic University, Hung Hom, Kowloon, Hong Kong, China."
+    }
+  ],
+  "description": "Reconstructed HydroFuseNet reference scripts and separately labeled historical and matched evaluation summaries. Not the authenticated original training/ablation code; archived checkpoint binaries are not deposited.",
+  "version": "1.1.0",
+  "publication_date": "2026-11-25",
+  "keywords": [
+    "flood segmentation",
+    "remote sensing",
+    "event-disjoint evaluation",
+    "multimodal deep learning",
+    "reconstructed research software"
+  ],
+  "license_note": "The Python software license has not been established. Confirm rights and an accepted license selection before publishing. No license code is asserted by this template."
+}
