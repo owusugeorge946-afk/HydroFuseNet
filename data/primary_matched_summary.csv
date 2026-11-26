@@ -1,0 +1,7 @@
+metric,hydrofusenet_groupnorm,unet_fp32,notes
+event_macro_flood_iou,0.3578581334,0.3095618988,six equally weighted held-out events
+pooled_flood_iou,0.4590208,0.4719233,from separate pooled confusions
+event_macro_paired_difference,0.0482962346,,HydroFuseNet minus U-Net; paired exact sign-flip p 0.4375
+paired_bootstrap_95_percent_lower,-0.03078,,event bootstrap
+paired_bootstrap_95_percent_upper,0.14725,,event bootstrap
+paired_sign_flip_two_sided_p,0.4375,,64 sign assignments
