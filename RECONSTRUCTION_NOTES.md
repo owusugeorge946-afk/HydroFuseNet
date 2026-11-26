@@ -1,16 +1,11 @@
-# Reconstruction notes
+# Source and model reconstruction notes
 
-Verified from retained HydroFuseNet manuscript materials:
-- 28 events; 16 train, 6 validation, 6 held-out test.
-- 26,111 retained patches from 771 source tiles.
-- 256×256 patches; stride 128.
-- Pre-SAR, post-SAR, SAR-change, optical and DEM inputs.
-- Background, permanent-water and flood classes.
-- Python/PyTorch; NVIDIA A100.
-- Learning rate 3e-4; maximum 10 epochs.
-- Best finite validation Flood IoU checkpoint; final epoch 6 with validation Flood IoU 0.5842.
-- Class weighting.
-- Predictive uncertainty = 1 - maximum predicted class probability.
-- Five independently retrained leave-one-modality-out configurations.
+The source files in this ZIP are reconstructed code. Their optimizer, normalization, event split, architecture and ablation mechanisms must not be attributed to the original checkpoint training.
 
-Not exactly recovered: event identities for each split, exact network layer widths, batch size, optimizer, weight decay, class-weight values, random seed and normalization constants. These are reconstruction defaults and must not be represented as verified original settings.
+**Primary verified evaluation:** HydroFuseNet GroupNorm versus 17-channel U-Net, same six event-disjoint test events. Event-macro Flood IoU 0.357858 versus 0.309562; pooled Flood IoU 0.459021 versus 0.471923. Paired sign-flip p = 0.4375; six-event bootstrap 95% interval [-0.03078, 0.14725].
+
+**Ancillary separate original experiments:** original full-model IoU 0.344765; `no_optical` 0.493052; other ablations documented in `data/trained_modality_ablation.csv`. Their checkpoints and selected epochs were independently audited, but the original executable modality-exclusion mechanism was not recovered.
+
+**Reader evidence:** fixed channelwise bounds, normalization to [0,1], invalid-pixel masking, five input branches with channels [2,2,2,13,1]. Source DEM and SAR physical calibration is documented in GEOID-Flood, while unit labels are absent in locally copied raster metadata.
+
+**Acquisition caveat:** reported optical-to-SAR intervals use source-file names; the Sentinel-2 layer can be a multi-scene per-pixel mosaic. Do not assert per-pixel acquisition gaps or causality.
