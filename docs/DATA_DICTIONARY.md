@@ -56,3 +56,7 @@ Performance of the full model and leave-one-modality-out models. Each reduced mo
 ## `experiment_config.json`
 
 Machine-readable summary of the task, inputs, split, training setting, and selected checkpoint.
+
+## Primary versus ancillary series (2026-11 release)
+
+For exact provenance distinctions and interpretation of `primary_matched_*` versus older CSVs, see `data/ancillary_record_guide.md` and `PROVENANCE_AND_SCOPE.md`. The newer matched values do not overwrite the older series.
