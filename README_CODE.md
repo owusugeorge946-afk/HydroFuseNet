@@ -1,32 +1,21 @@
-# HydroFuseNet reconstructed reproducibility implementation
+# Reconstructed code: execution scope
 
-This package reconstructs the HydroFuseNet workflow from the finalized manuscript methodology and retained manuscript-ready outputs. It is **not a byte-for-byte copy of the original Google Colab notebooks**.
+The scripts in `src/` are a **reference reconstruction** from earlier research materials. They are not the original HydroFuseNet GroupNorm training and no-optical training scripts.
 
-Verified design elements reproduced here include: five multimodal inputs (pre-event SAR, post-event SAR, SAR change, optical imagery and DEM); 256×256 patches with 128-pixel stride; event-disjoint train/validation/test evaluation; three-class segmentation; learning rate 3e-4; checkpoint selection by validation Flood IoU; uncertainty defined as `1 - max(class probability)`; and independently retrained leave-one-modality-out ablations.
+The current implementation:
+- uses `src/01_preprocessing.py` for scene-specific 2nd–98th percentile normalization; the archived matched-evaluation reader used fixed training-derived channelwise bounds;
+- uses `src/02_event_disjoint_split.py` to generate a new seeded 16/6/6 event split; **this does not preserve the original event assignments**;
+- creates enabled encoder branches in `src/03_hydrofusenet_model.py`; dropping a branch changes the reconstructed architecture, unlike the identical state-tensor layouts observed across archived original ablation checkpoints;
+- uses a separately specified optimizer, batch size, class weights, seed and GroupNorm/BatchNorm configuration that must not be assumed to match historical training.
 
-## Important boundary
-
-The exact original event identities in each split, architecture layer widths, batch size, optimizer, class-weight values, random seed and normalization constants were not recoverable. Reconstruction defaults for these items are explicitly marked in `config/experiment_config.json`. Do not describe those defaults as verified original settings.
-
-## Prepared data layout
-
-```text
-prepared/EMSRxxx/
-  pre_sar.npy
-  post_sar.npy
-  optical.npy
-  dem.npy
-  label.npy
-  valid.npy   # optional
-```
-
-Run:
+To inspect the entry points without running training:
 
 ```bash
-python src/01_preprocessing.py --input prepared --output patches
-python src/02_event_disjoint_split.py --manifest patches/manifest.csv --output splits.json
-python src/04_train.py --manifest patches/manifest.csv --splits splits.json --output runs/full
-python src/05_evaluate.py --manifest patches/manifest.csv --splits splits.json --checkpoint runs/full/best.pt --output evaluation
-python src/06_uncertainty.py --predictions evaluation/pixel_outputs.npz --output evaluation/uncertainty.csv
-python src/07_ablation.py --manifest patches/manifest.csv --splits splits.json --output runs/ablations
+python -m compileall -q src
+python src/04_train.py --help
+python src/07_ablation.py --help
 ```
+
+Only run full training if you intend to run a **new experiment** on appropriately prepared and licensed input data. Do not attach the resulting metrics to the historical study without explicit provenance labels.
+
+For expected prepared-data layout and example commands see `docs/DATA_DICTIONARY.md` and the sources. Training can be computationally demanding.
