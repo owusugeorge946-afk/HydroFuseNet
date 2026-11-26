@@ -1,151 +1,45 @@
-# HydroFuseNet
+# HydroFuseNet: Source code and research results
 
-## Event-Generalizable Multimodal Deep Learning for Flood Segmentation with Uncertainty-Aware Mapping
+**Associated research article:** HydroFuseNet: Cross-Event Transferability, Multimodal Segmentation, and Comparative Reliability Across Unseen Flood Events
 
-George Owusu Amoah*¹, Rachel Olawoyin¹, Francis Quayson²˒³
+**Authors:** George Owusu Amoah (corresponding author), Rubayet Bin Mostafiz, Rachel Olawoyin, Francis Quayson.
 
-¹ Department of Geography and Regional Planning, University of Cape Coast, Ghana
-² Department of Land Surveying and Geospatial Science, The Hong Kong Polytechnic University, Hong Kong, China
-³ Research Institute for Land and Space, The Hong Kong Polytechnic University, Hong Kong, China
+**Correspondence:** george.amoah003@stu.ucc.edu.gh
 
-Corresponding author: George Owusu Amoah
-## Overview
+## Release scope
 
-HydroFuseNet is a multimodal deep-learning framework for event-generalizable flood segmentation from Earth-observation data. The framework integrates pre-event Sentinel-1 SAR, post-event Sentinel-1 SAR, explicit SAR change, Sentinel-2 optical imagery, and terrain elevation to distinguish three classes:
+This repository provides a **reconstructed reference implementation** of a multimodal flood-segmentation workflow, preserved ancillary experiment summaries, and machine-readable summary results from the matched independent-test comparison. The source files in `src/` **were not authenticated as the original code used to train the archived HydroFuseNet or modality-ablation checkpoints**. Running these scripts with their current defaults must not be expected to regenerate the reported manuscript results.
 
-- Background
-- Permanent water
-- Flood
+The archived results fall into two distinct groups:
 
-The experimental design uses an event-disjoint partitioning strategy so that flood events used for independent testing are not represented during model training or validation. This provides a stricter assessment of model transfer to previously unseen flood events.
+1. **Primary matched evaluation**: the separately trained GroupNorm HydroFuseNet and 17-channel U-Net, evaluated on six unseen events with matched reference labels. Equal-event Flood IoU: 0.3579 and 0.3096; pooled Flood IoU: 0.4590 and 0.4719, respectively. Paired sign-flip p = 0.4375, with 95% paired-event bootstrap interval [-0.0308, 0.1473].
+2. **Ancillary original-model and modality-screening records**: original full model pooled Flood IoU 0.3448 and no-optical configuration 0.4931. These are different checkpoints from the primary matched experiment. The precise modality-exclusion source implementation and per-run test-patch identity have not been fully reconstructed.
 
-This repository contains the derived results, experiment metadata, and supporting documentation associated with the HydroFuseNet manuscript.
+The test subset includes 2,278 overlapping patches from six independent flood events and 154 distinct source tiles; all retained data include 26,111 patches from 28 events. No additional independent events are introduced in this package.
 
-## Multimodal inputs
+## Data files
 
-HydroFuseNet integrates five complementary Earth-observation inputs:
+- `data/primary_matched_event_iou.csv` — six-event, two-model IoU comparisons from the locked evaluation.
+- `data/primary_matched_summary.csv` — matched model aggregates and significance analysis.
+- `data/ancillary_record_guide.md` — clarifies the provenance of historical CSV tables, including `final_test_metrics.csv` and `trained_modality_ablation.csv`.
+- Existing CSVs in `data/` — ancillary original-model optimization, segmentation and modality-screening results as documented.
 
-| Input | Source | Information | Model role |
-|---|---|---|---|
-| Pre-event SAR | Sentinel-1 | VV/VH radar backscatter | Baseline surface condition |
-| Post-event SAR | Sentinel-1 | VV/VH radar backscatter | Event-time surface response |
-| SAR change | Derived from Sentinel-1 | Post-event versus pre-event response | Transient surface change |
-| Optical imagery | Sentinel-2 | Multispectral reflectance | Surface and land-cover context |
-| Elevation | DEM | Terrain elevation | Topographic context |
+## Reference implementation
 
-## Event-disjoint experimental design
+The `src/` folder contains a **reconstruction**, not an original training snapshot. It uses a scene-level percentile preprocessing approach, a configurable branch-removal architecture and a seeded event split; these choices are not necessarily the same as the archived experiments. Its command-line entry points are documented in `README_CODE.md`. The runnable reference code is provided to inspect one possible modeling workflow, **not as an exact reproduction claim**.
 
-The benchmark comprises **28 flood events**, partitioned into:
+Original reader evidence instead supports 17 stored channels and five derived branches: pre-SAR 2, post-SAR 2, normalized SAR change 2, optical 12 plus a derived valid-band mean 1, and DEM 1. The matched evaluation used fixed channelwise normalization bounds.
 
-- **16 training events**
-- **6 validation events**
-- **6 independent test events**
+For full reproduction of manuscript figures and metrics, the specific archived checkpoints, manifests, preprocessing bounds and evaluation code would need to be deposited together. These are not present in this lightweight package.
 
-All image patches originating from a given flood event were restricted to a single subset, preventing event overlap between training, validation, and independent testing.
+## External inputs
 
-Image samples were generated as **256 × 256 pixel patches** with a **128-pixel stride**.
+The source GEOID-Flood benchmark, optical/radar satellite imagery and third-party elevation products are **not included**. Obtain the dataset from its originating providers and comply with all applicable terms. The model checkpoint files are not included. No credentials or account tokens are included.
 
-## Final independent-test performance
+## Citation and deposit
 
-| Metric | Value |
-|---|---:|
-| Overall accuracy | **0.8946** |
-| Mean IoU | **0.5988** |
-| Mean F1 | **0.7244** |
-| Flood IoU | **0.3448** |
-| Flood precision | **0.4842** |
-| Flood recall | **0.5449** |
-| Flood F1 | **0.5128** |
+`CITATION.cff` contains the four-author software citation metadata. See `ZENODO_DEPOSIT_INSTRUCTIONS.md` for the workflow and `PROVENANCE_AND_SCOPE.md` for source-to-result boundaries. A DOI is **not supplied before Zenodo actually assigns one**.
 
-Performance varied substantially among unseen flood events. Event-level Flood IoU ranged from **0.7292 for EMSR314** to **0.0118 for EMSR286**, providing a direct assessment of cross-event generalization rather than performance based only on pooled pixels.
+## Release version
 
-## Repository contents
-
-The `data/` directory contains machine-readable results from the final HydroFuseNet experiments:
-
-- dataset and event-split summary;
-- final independent-test performance;
-- class-specific segmentation metrics;
-- held-out event generalization results;
-- pooled versus event-macro evaluation;
-- event-level predictive uncertainty;
-- independently trained modality-ablation experiments; and
-- experiment configuration metadata.
-
-## Repository structure
-
-```text
-HydroFuseNet/
-├── README.md
-├── CITATION.cff
-├── .gitignore
-├── LICENSE_NOTICE.md
-├── RELEASE_CHECKLIST.md
-├── SHA256SUMS.txt
-│
-├── data/
-│   ├── dataset_summary.csv
-│   ├── final_test_metrics.csv
-│   ├── class_specific_metrics.csv
-│   ├── event_level_generalization.csv
-│   ├── pooled_vs_event_macro.csv
-│   ├── event_uncertainty_summary.csv
-│   ├── trained_modality_ablation.csv
-│   └── experiment_config.json
-│
-└── docs/
-    └── DATA_DICTIONARY.md
-
-
-Modality-ablation experiments
-
-The repository includes results from independently trained leave-one-modality-out configurations. These experiments assess how the model responds when optical imagery, pre-event SAR, post-event SAR, SAR change, or DEM information is excluded.
-
-The ablation results are provided in:
-
-data/trained_modality_ablation.csv
-
-These experiments should be interpreted as tests of modality dependence and interaction rather than simple feature-importance rankings.
-
-Predictive uncertainty
-
-Event-level uncertainty summaries are provided in:
-
-data/event_uncertainty_summary.csv
-
-The data distinguish mean predictive uncertainty for correctly and incorrectly classified pixels for each independent test event, allowing model reliability to be examined alongside segmentation performance.
-
-Data availability
-
-This repository provides derived research results and experiment metadata. It does not redistribute the complete source Earth-observation imagery, original flood-reference labels, or the full GEOID-Flood benchmark.
-
-Users seeking to reproduce the complete workflow should obtain the underlying benchmark and satellite observations from their respective original sources and comply with the corresponding data-access and licensing requirements.
-
-Raw HydroFuseNet model checkpoints are not included in this release.
-
-Data provenance
-
-The HydroFuseNet experiments use the GEOID-Flood benchmark assembled from Copernicus Emergency Management Service flood activations together with Sentinel-1 SAR, Sentinel-2 optical imagery, and terrain information.
-
-Original datasets remain subject to the citation, access, and redistribution requirements of their respective providers.
-
-Citation
-
-If you use the results or resources provided in this repository, please cite the associated HydroFuseNet manuscript.
-
-GitHub-compatible citation metadata are provided in:
-
-CITATION.cff
-
-The final journal citation and DOI will be added after publication.
-
-Correspondence
-
-George Owusu Amoah
-Department of Geography and Regional Planning
-University of Cape Coast, Ghana
-Email: george.amoah003@stu.ucc.edu.gh
-
-Version
-
-HydroFuseNet v1.0.0 — 2026
+Reconstructed reference implementation and evidence summary, version **1.1.0**, 2026.
