@@ -1,33 +1,31 @@
 cff-version: 1.2.0
-
-message: "If you use these HydroFuseNet results, please cite the associated manuscript."
-
-title: "HydroFuseNet: Event-Generalizable Multimodal Deep Learning for Flood Segmentation with Uncertainty-Aware Mapping"
-
-type: dataset
-
+message: If you use this code and results package, please cite this software release and the associated
+  HydroFuseNet manuscript.
+title: 'HydroFuseNet: Reconstructed Reference Implementation and Event-Disjoint Flood Segmentation
+  Evidence'
+type: software
 authors:
-  - family-names: "Field"
-    given-names: "Sean"
-    affiliation: "School of Computing and Department of Anthropology, University of Wyoming, USA"
-
-  - family-names: "Olawoyin"
-    given-names: "Rachel"
-    affiliation: "Department of Geography and Regional Planning, University of Cape Coast, Ghana"
-
-  - family-names: "Amoah"
-    given-names: "George Owusu"
-    affiliation: "Department of Geography and Regional Planning, University of Cape Coast, Ghana"
-    email: "george.amoah003@stu.ucc.edu.gh"
-
-  - family-names: "Quayson"
-    given-names: "Francis"
-    affiliation: "Department of Land Surveying and Geospatial Science, The Hong Kong Polytechnic University, Hong Kong, China"
-
-year: 2026
-
-version: "1.0.0"
-
-repository-code: "https://github.com/owusugeorge946-afk/HydroFuseNet"
-
-notes: "Research data and derived results accompanying the HydroFuseNet manuscript. George Owusu Amoah is the corresponding author. Francis Quayson is also affiliated with the Research Institute for Land and Space, The Hong Kong Polytechnic University, Hong Kong, China. Article DOI will be added after publication."
+- given-names: George Owusu
+  family-names: Amoah
+  affiliation: Department of Geography and Regional Planning, University of Cape Coast, Cape Coast,
+    Ghana.
+  email: george.amoah003@stu.ucc.edu.gh
+- given-names: Rubayet Bin
+  family-names: Mostafiz
+  affiliation: LaHouse Research & Education Center, Department of Biological and Agricultural Engineering,
+    Louisiana State University Agricultural Center, Baton Rouge, Louisiana, USA.
+- given-names: Rachel
+  family-names: Olawoyin
+  affiliation: Department of Geography and Regional Planning, University of Cape Coast, Cape Coast,
+    Ghana.
+- given-names: Francis
+  family-names: Quayson
+  affiliation: Department of Land Surveying and Geospatial Science, The Hong Kong Polytechnic University,
+    Hung Hom, Kowloon, Hong Kong, China.; Research Institute for Land and Space, The Hong Kong Polytechnic
+    University, Hung Hom, Kowloon, Hong Kong, China.
+version: 1.1.0
+date-released: '2026-11-25'
+repository-code: https://github.com/owusugeorge946-afk/HydroFuseNet
+abstract: Reconstructed reference scripts, documented ancillary outputs, and independently verified
+  summary values for the matched HydroFuseNet and U-Net event-disjoint evaluation. Original ablation
+  training-code lineage is not established.
