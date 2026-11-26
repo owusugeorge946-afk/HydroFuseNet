@@ -30,5 +30,7 @@
     "test_events": 6,
     "event_overlap": false
   },
-  "uncertainty_note": "Repository summary uses manuscript-reported uncertainty values. Confirm the exact uncertainty formula in the final analysis code before public release."
+  "uncertainty_note": "Repository summary uses manuscript-reported uncertainty values. Confirm the exact uncertainty formula in the final analysis code before public release.",
+  "experimental_series": "ancillary original full-model record, not primary matched GroupNorm comparison",
+  "training_hardware_note": "hardware string carried over from legacy metadata; not independently authenticated for the matched comparison"
 }
